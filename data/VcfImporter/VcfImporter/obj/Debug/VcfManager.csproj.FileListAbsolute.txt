@@ -1,0 +1,12 @@
+c:\users\bakal_000\documents\visual studio 2015\Projects\VcfImporter\VcfImporter\bin\Debug\VcfImporter.exe.config
+c:\users\bakal_000\documents\visual studio 2015\Projects\VcfImporter\VcfImporter\bin\Debug\VcfImporter.exe
+c:\users\bakal_000\documents\visual studio 2015\Projects\VcfImporter\VcfImporter\bin\Debug\VcfImporter.pdb
+c:\users\bakal_000\documents\visual studio 2015\Projects\VcfImporter\VcfImporter\obj\Debug\VcfManager.csprojResolveAssemblyReference.cache
+c:\users\bakal_000\documents\visual studio 2015\Projects\VcfImporter\VcfImporter\obj\Debug\VcfImporter.exe
+c:\users\bakal_000\documents\visual studio 2015\Projects\VcfImporter\VcfImporter\obj\Debug\VcfImporter.pdb
+C:\Users\bakal_000\Documents\csharp_read_vcf\data\VcfImporter\VcfImporter\bin\Debug\VcfImporter.exe.config
+C:\Users\bakal_000\Documents\csharp_read_vcf\data\VcfImporter\VcfImporter\obj\Debug\VcfImporter.exe
+C:\Users\bakal_000\Documents\csharp_read_vcf\data\VcfImporter\VcfImporter\obj\Debug\VcfImporter.pdb
+C:\Users\bakal_000\Documents\csharp_read_vcf\data\VcfImporter\VcfImporter\bin\Debug\VcfImporter.exe
+C:\Users\bakal_000\Documents\csharp_read_vcf\data\VcfImporter\VcfImporter\bin\Debug\VcfImporter.pdb
+C:\Users\bakal_000\Documents\csharp_read_vcf\data\VcfImporter\VcfImporter\obj\Debug\VcfManager.csprojResolveAssemblyReference.cache
