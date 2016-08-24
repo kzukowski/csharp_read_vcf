@@ -12,7 +12,12 @@ namespace VcfImporter
         static void Main(string[] args)
         {
             
-            VcfManager reader = new VcfManager("example_small.vcf");
+            //file has to be placed in debug folder of the project
+            VcfManager reader = new VcfManager("example_big.vcf");
+            reader.establishConnectionWithDatabase("127.0.0.1", "zootechnika", "root", "");
+            List<string> temp = reader.tableInsertQueryStringGenerator("biodata",100);
+            reader.sendQueriesInTransaction(temp);
+            Console.ReadKey();
         }
     }
 }
