@@ -14,9 +14,9 @@ namespace VcfImporter
             
             //file has to be placed in debug folder of the project
             VcfManager reader = new VcfManager("example_big.vcf");
-            reader.connect("127.0.0.1", "zootechnika", "root", "");
-            List<string> temp = reader.generateInsert("biodata",100);
-            reader.send(temp);
+            reader.establishConnectionWithDatabase("127.0.0.1", "zootechnika", "root", "");
+            List<string> temp = reader.tableInsertQueryStringGenerator("biodata",100);
+            reader.sendQueriesInTransaction(temp);
             Console.ReadKey();
         }
     }
