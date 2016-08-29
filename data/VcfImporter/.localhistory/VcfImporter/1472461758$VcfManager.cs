@@ -142,6 +142,7 @@ namespace VcfImporter
                         if (!headerData.ContainsKey(headerName = line.Substring(line.IndexOf("##") + 2, (line.IndexOf("=")) - 2)))
                         {
                             headerData.Add(headerName, new List<Dictionary<string, string>>());
+                            //Console.WriteLine("Added: " + headerName);
                         }
                         if (line[line.Length - 1] == '>') // check if row has multiple parameters
                         {
@@ -161,16 +162,23 @@ namespace VcfImporter
                                     fieldValue = tempSubString.Substring(tempSubString.IndexOf("=") + 1, (tempCharacterPosition = (tempSubString.IndexOf(",") > 0 ? tempSubString.IndexOf(",") : tempSubString.IndexOf(">"))) - tempSubString.IndexOf("=") - 1);
                                 }
                                 tempDictionary.Add(fieldName, fieldValue);
+                                //Console.WriteLine(fieldName + ":" + fieldValue);
                                 tempSubString = tempSubString.Substring(tempCharacterPosition + 1);
                             }
                             List<Dictionary<string, string>> tempList;
                             headerData.TryGetValue(headerName, out tempList);
                             tempList.Add(tempDictionary);
+                            //foreach (KeyValuePair<string, string> kvp in tempDictionary)
+                            //{
+                            //    //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                            //    Console.WriteLine(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
+                            //}
                         }
                         else // Adds to header dictionary headername with only one value, without value name
                         {
                             tempSubString = line.Substring(line.IndexOf("=") + 1);
                             headerData[headerName].Add(new Dictionary<string, string>() { { "", tempSubString } });
+                            //Console.WriteLine(tempSubString);
                         }
 
                     }
@@ -194,6 +202,7 @@ namespace VcfImporter
                                     tempSubString = "";
                                 }
                             }
+                            //Console.WriteLine(string.Join("\t", tableRowNames.ToArray()));
                         }
                         else
                         {
@@ -213,6 +222,7 @@ namespace VcfImporter
                                 }
                             }
                             tableValues.Add(tempValues);
+                            //Console.WriteLine(string.Join("\t", tempValues.ToArray()));
                         }
                     }
                     linesCounter++;
@@ -241,6 +251,7 @@ namespace VcfImporter
                         if (!headerData.ContainsKey(headerName = line.Substring(line.IndexOf("##") + 2, (line.IndexOf("=")) - 2)))
                         {
                             headerData.Add(headerName, new List<Dictionary<string, string>>());
+                            //Console.WriteLine("Added: " + headerName);
                         }
                         if (line[line.Length - 1] == '>') // check if row has multiple parameters
                         {
@@ -260,16 +271,23 @@ namespace VcfImporter
                                     fieldValue = tempSubString.Substring(tempSubString.IndexOf("=") + 1, (tempCharacterPosition = (tempSubString.IndexOf(",") > 0 ? tempSubString.IndexOf(",") : tempSubString.IndexOf(">"))) - tempSubString.IndexOf("=") - 1);
                                 }
                                 tempDictionary.Add(fieldName, fieldValue);
+                                //Console.WriteLine(fieldName + ":" + fieldValue);
                                 tempSubString = tempSubString.Substring(tempCharacterPosition + 1);
                             }
                             List<Dictionary<string, string>> tempList;
                             headerData.TryGetValue(headerName, out tempList);
                             tempList.Add(tempDictionary);
+                            //foreach (KeyValuePair<string, string> kvp in tempDictionary)
+                            //{
+                            //    //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                            //    Console.WriteLine(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
+                            //}
                         }
                         else // Adds to header dictionary headername with only one value, without value name
                         {
                             tempSubString = line.Substring(line.IndexOf("=") + 1);
                             headerData[headerName].Add(new Dictionary<string, string>() { { "", tempSubString } });
+                            //Console.WriteLine(tempSubString);
                         }
 
                     }
@@ -304,6 +322,7 @@ namespace VcfImporter
                             {
                                 fieldValue = tempSubString.Substring(0, (tempCharacterPosition = (tempSubString.IndexOf("\t") < 0 ? tempSubString.Length : tempSubString.IndexOf("\t"))));
                                 tableRowNames.Add(fieldValue);
+                                //Console.WriteLine(fieldValue);
                                 if (tempSubString.Length > tempCharacterPosition + 1)
                                 {
                                     tempSubString = tempSubString.Substring(tempCharacterPosition + 1);
@@ -313,6 +332,7 @@ namespace VcfImporter
                                     tempSubString = "";
                                 }
                             }
+                            //Console.WriteLine(string.Join("\t", tableRowNames.ToArray()));
                         }
                         else
                         {
@@ -331,6 +351,7 @@ namespace VcfImporter
                                     tempSubString = "";
                                 }
                             }
+                            //Console.WriteLine(string.Join("\t", tempValues.ToArray()));
                         }
                     }
                     linesCounter++;
