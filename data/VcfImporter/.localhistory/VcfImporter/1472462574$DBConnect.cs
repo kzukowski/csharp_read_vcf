@@ -2,6 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace VcfImporter
 {
@@ -89,14 +94,18 @@ namespace VcfImporter
             //open connection
             if (this.OpenConnection() == true)
             {
+                Console.WriteLine(1);
                 //create command and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(command, connection);
+                Console.WriteLine(2);
 
                 //Execute command
                 cmd.ExecuteNonQuery();
+                Console.WriteLine(3);
 
                 //close connection
                 this.CloseConnection();
+                Console.WriteLine(4);
             }
         }
 

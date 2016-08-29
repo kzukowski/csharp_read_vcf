@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace VcfImporter
 {
@@ -22,6 +27,7 @@ namespace VcfImporter
             headerData = new Dictionary<String, List<Dictionary<string, string>>>();
             tableRowNames = new List<string>();
             tableValues = new List<List<string>>();
+            readAllDataFromFile();
         }
 
         public void readAllDataFromFile(string fileLocation)
