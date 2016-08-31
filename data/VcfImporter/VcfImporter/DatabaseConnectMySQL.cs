@@ -2,15 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VcfImporter
 {
-    class DBConnect
+    class DatabaseConnectMySQL : DatabaseConnectInterface
     {
         private MySqlConnection connection;
         private string server;
@@ -19,28 +14,19 @@ namespace VcfImporter
         private string password;
 
         //Constructor
-        public DBConnect()
+        public DatabaseConnectMySQL()
         {
 
         }
 
         //Initialize values
-        public void Initialize(string server, string datbase, string username, string password)
+        public void initialize(string connectionParameters)
         {
-            this.server = server;
-            this.database = datbase;
-            this.uid = username;
-            this.password = password;
-            string connectionString;
-            connectionString = "server=" + server + ";" + "uid=" +
-            uid + ";" + "pwd=" + password + ";" + "database=" + database + ";";
-            Console.WriteLine(connectionString);
-
-            connection = new MySqlConnection(connectionString);
+            connection = new MySqlConnection(connectionParameters);
         }
 
         //open connection to database
-        private bool OpenConnection()
+        public bool openConnection()
         {
             try
             {
@@ -70,7 +56,7 @@ namespace VcfImporter
         }
 
         //Close connection
-        private bool CloseConnection()
+        public bool closeConnection()
         {
             try
             {
@@ -82,36 +68,36 @@ namespace VcfImporter
                 Console.WriteLine(ex.Message);
                 return false;
             }
+            finally
+            {
+                Console.WriteLine("connection closed");
+            }
         }
 
 
         // sending single query to database
-        public void SendQuery(string command)
+        public void sendQuery(string command)
         {
             //open connection
-            if (this.OpenConnection() == true)
+            if (this.openConnection() == true)
             {
-                Console.WriteLine(1);
                 //create command and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(command, connection);
-                Console.WriteLine(2);
 
                 //Execute command
                 cmd.ExecuteNonQuery();
-                Console.WriteLine(3);
 
                 //close connection
-                this.CloseConnection();
-                Console.WriteLine(4);
+                this.closeConnection();
             }
         }
 
         // makes one transaction with multiple queues in passed list
-        // databases have query size limits, so it is necessary to divide them and send them in transaction
-        public void queriesTransaction(List<string> commands)
+        // databases have query size limits, so it is necessary to divide them and sendToDatabase them in transaction
+        public void queriesInTransaction(List<string> commands)
         {
             //open connection
-            if (this.OpenConnection() == true)
+            if (this.openConnection() == true)
             {
                 MySqlCommand myCommand = connection.CreateCommand();
                 MySqlTransaction myTrans = connection.BeginTransaction();
@@ -148,7 +134,7 @@ namespace VcfImporter
                 }
                 finally
                 {
-                    this.CloseConnection();
+                    this.closeConnection();
                 }
             }
         }

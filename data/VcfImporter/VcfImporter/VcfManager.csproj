@@ -47,10 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConnect.cs" />
+    <Compile Include="DatabaseConnectInterface.cs" />
+    <Compile Include="DatabaseConnectMSSQL.cs" />
+    <Compile Include="DatabaseConnectMySQL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VcfManager.cs" />
+    <Compile Include="VcfManagerMSSQL.cs" />
+    <Compile Include="VcfManagerMySQL.cs" />
+    <Compile Include="VcfManagerAbstract.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
